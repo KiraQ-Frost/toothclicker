@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tooth Clicker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icons8-tooth-32.png">
+</head>
+<body>
+    <script src="script.js"></script>
+    <h1 id="factoryTitle">Princess Omelas Tooth Factory</h1>
+    <div id="tooManyTeeth"></div>
+    <div id="wingsAndTeeth">
+        <img src="images/wing.png" class="wing" id="firstWing">
+        <img src="images/tooth-png-31286.png" id="clicker" onclick="count()">
+        <img src="images/wing.png" class="wing" id="secondWing">
+    </div>
+    <div id="teethCounter">Teeth: <span id="teethCount">0</span></div>
+    <div id="tpsCounter">Teeth Per Second: <span id="teethCountPerSecond">0</span></div>
+    <div id="tpcCounter">Teeth Per Click: <span id="teethCountPerClick">1</span></div>
+
+    <div id="upgrades">
+        <div id="poofBox">
+            <div>Poofs: <span id="poofNum">0</span></div>
+            <div>Cost: <span id="poofCost">69</span></div>
+            <button onclick="buyPoof()">Buy</button>
+        </div>
+        <div id="sipBox">
+            <div>Sips: <span id="sipNum">0</span></div>
+            <div>Cost: <span id="sipCost">100</span></div>
+            <button onclick="buySip()">Buy</button>
+        </div>
+        <div id="lacelessBox">
+            <div>Laceless: <span id="lacelessNum">0</span></div>
+            <div>Cost: <span id="lacelessCost">1000</span></div>
+            <button onclick="buyLaceless()">Buy</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+@font-face {
+    font-family: headerFont;
+    src: url(fonts/alsscrp.ttf);
+}
+
+@font-face {
+    font-family: textFont;
+    src: url(fonts/Cormorant-Bold.ttf);
+}
+
+#clicker {
+    width: 30%;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+#factoryTitle {
+    font-family: headerFont;
+    font-size: 2.5em;
+}
+
+.wing {
+    width: 20%;
+    vertical-align: top;
+    margin-top: 30px;
+}
+
+#firstWing {
+    transform: scaleX(-1);
+    margin-right: 10px;
+}
+
+#secondWing {
+    margin-left: 10px;
+}
+
+#teethCounter {
+    font-size: 1.6em;
+}
+
+#upgrades {
+    display: flex;
+    margin-top: 10px;
+}
+
+#poofBox, #sipBox, #lacelessBox {
+    margin: 10px auto;
+    padding: 20px;
+    display: block;
+    width: 20%;
+    border: 1px solid black;
+    border-radius: 8px;
+    font-family: textFont;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+html {
+    text-align: center;
+    font-family: textFont;
+    font-size: 1.2em;
+}
+
+button {
+    background-color: rgb(156, 156, 236);
+    margin-top: 5px;
+    border-radius: 10px;
+    padding: 5px 20px;
+}
