@@ -1,4 +1,4 @@
-var teeth = 99999;
+var teeth = 0;
 var tps = 0;
 var tpc = 1;
 
