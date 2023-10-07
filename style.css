@@ -8,6 +8,31 @@
     src: url(fonts/Cormorant-Bold.ttf);
 }
 
+@media screen and (min-width: 980px) {
+    #clicker {
+        max-width: 250px;
+        max-height: 250px;
+    }
+
+    .wing {
+        max-width: 175px;
+        max-height: 175px;
+    }
+
+    .heart {
+        display: inline;
+        max-width: 25px;
+        max-height: 25px;
+        margin: auto 0px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .heart {
+        display: none;
+    }
+}
+
 #clicker {
     width: 30%;
     border: 1px solid black;
@@ -37,6 +62,7 @@
     margin-left: 10px;
 }
 
+
 #teethCounter {
     font-size: 1.6em;
 }
@@ -55,12 +81,14 @@
     border-radius: 8px;
     font-family: textFont;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: #fff2f7;
 }
 
 html {
     text-align: center;
     font-family: textFont;
     font-size: 1.2em;
+    background-color: #ffedf4;
 }
 
 button {
