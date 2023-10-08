@@ -83,7 +83,7 @@ function resetProgress() {
 
     saveProgress();
     updateText();
-
+    resetButtons();
 }
 
 function updateText() {
@@ -99,6 +99,18 @@ function updateText() {
 
 function updateTeeth() {
     document.getElementById("teethCount").innerText = teeth;
+}
+
+function showConfirm() {
+    document.getElementById("resetTeeth").style.display = "none";
+    document.getElementById("resetConfirm").style.display = "block";
+
+    setTimeout(resetButtons, 3000);
+}
+
+function resetButtons() {
+    document.getElementById("resetTeeth").style.display = "block";
+    document.getElementById("resetConfirm").style.display = "none";
 }
 
 setInterval(function() {

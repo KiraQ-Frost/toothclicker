@@ -20,7 +20,6 @@
     <div id="teethCounter">Teeth: <span id="teethCount">0</span></div>
     <div id="tpsCounter">Teeth Per Second: <span id="teethCountPerSecond">0</span></div>
     <div id="tpcCounter">Teeth Per Click: <span id="teethCountPerClick">1</span></div>
-
     <div id="upgrades">
         <div id="poofBox">
             <div>Poofs: <span id="poofNum">0</span></div>
@@ -39,6 +38,10 @@
             <div>Cost: <span id="lacelessCost">1000</span></div>
             <button onclick="buyLaceless()">Buy</button>
         </div>
+    </div>
+    <div class="resetProgress">
+        <button  id="resetTeeth" onclick="showConfirm()">Reset Teeth</button>
+        <button id="resetConfirm" onclick="resetProgress()">Confirm</button>
     </div>
 </body>
 </html>
