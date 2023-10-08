@@ -8,14 +8,14 @@
     <link rel="icon" type="image/png" sizes="32x32" href="images/icons8-tooth-32.png">
     <script src="script.js"></script>
 </head>
-<body onload="updateText()">
+<body onload="updateTeeth(), updateText()">
     
     <h1 id="factoryTitle">Princess Omelas Tooth Factory</h1>
     <div id="tooManyTeeth"></div>
     <div id="wingsAndTeeth">
-        <img src="images/wing.png" class="wing" id="firstWing">
-        <img src="images/tooth-png-31286.png" id="clicker" onclick="count()">
-        <img src="images/wing.png" class="wing" id="secondWing">
+        <img src="images/wing.png" class="wing" id="firstWing" draggable="false">
+        <img src="images/tooth-png-31286.png" id="clicker" onclick="count()" draggable="false">
+        <img src="images/wing.png" class="wing" id="secondWing" draggable="false">
     </div>
     <div id="teethCounter">Teeth: <span id="teethCount">0</span></div>
     <div id="tpsCounter">Teeth Per Second: <span id="teethCountPerSecond">0</span></div>

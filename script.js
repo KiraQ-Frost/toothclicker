@@ -83,6 +83,7 @@ function resetProgress() {
 
     saveProgress();
     updateText();
+    updateTeeth();
     resetButtons();
 }
 
