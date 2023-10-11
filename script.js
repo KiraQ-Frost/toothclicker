@@ -1,6 +1,10 @@
 var teeth = localStorage.getItem("teeth") != null? Number(localStorage.getItem("teeth")) : 0;
+var teethAllTime = localStorage.getItem("teethAllTime") != null? Number(localStorage.getItem("teethAllTime")) : 0
+
 var tps = localStorage.getItem("tps") != null? Number(localStorage.getItem("tps")) : 0;
 var tpc = localStorage.getItem("tpc") != null? Number(localStorage.getItem("tpc")) : 1;
+var teethClicked = localStorage.getItem("teethClicked") != null? Number(localStorage.getItem("teethClicked")) : 0
+var teethPried = localStorage.getItem("teethPried") != null? Number(localStorage.getItem("teethPried")) : 0
 
 var poofCost = localStorage.getItem("poofCost") != null? Number(localStorage.getItem("poofCost")) : 69;
 var poofs = localStorage.getItem("poofs") != null? Number(localStorage.getItem("poofs")) : 0;
@@ -11,6 +15,10 @@ var laceless = localStorage.getItem("laceless") != null? Number(localStorage.get
 
 function count() {
     teeth += tpc;
+    teethAllTime += tpc;
+    teethPried += tpc;
+    teethClicked++;
+
     updateTeeth();
 
     if(teeth >= 249600000000) {
@@ -60,8 +68,13 @@ function buyLaceless() {
 
 function saveProgress() {
     localStorage.setItem("teeth", teeth);
+    localStorage.setItem("teethAllTime", teethAllTime);
+
     localStorage.setItem("tps", tps);
     localStorage.setItem("tpc", tpc);
+    localStorage.setItem("teethClicked", teethClicked);
+    localStorage.setItem("teethPried", teethPried);
+
     localStorage.setItem("poofCost", poofCost);
     localStorage.setItem("poofs", poofs);
     localStorage.setItem("sipCost", sipCost);
@@ -72,8 +85,13 @@ function saveProgress() {
 
 function resetProgress() {
     teeth = 0;
+    teethAllTime = 0;
+
     tps = 0;
     tpc = 1;
+    teethClicked = 0;
+    teethPried = 0;
+
     poofCost = 69;
     poofs = 0;
     sipCost = 100;
@@ -114,8 +132,10 @@ function resetButtons() {
     document.getElementById("resetConfirm").style.display = "none";
 }
 
+//every second
 setInterval(function() {
     teeth += tps;
+    teethAllTime += tps;
     updateTeeth();
     saveProgress();
 }, 1000)
