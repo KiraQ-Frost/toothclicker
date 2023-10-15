@@ -8,15 +8,15 @@
     src: url(fonts/Cormorant-Bold.ttf);
 }
 
-@media screen and (min-width: 980px) {
+@media screen and (min-width: 650px) {
     #clicker {
-        max-width: 250px;
-        max-height: 250px;
+        max-width: 200px;
+        max-height: 300px;
     }
 
     .wing {
-        max-width: 175px;
-        max-height: 175px;
+        max-width: 125px;
+        max-height: 125px;
     }
 
     .heart {
@@ -26,8 +26,16 @@
         margin: auto 0px;
     }
 
-    #poofBox, #sipBox, #lacelessBox {
-        max-width: 18%;
+    #screen {
+        display: flex;
+    }
+
+    #clickerArea {
+        width: 70%;
+    }
+
+    #windowGrouping {
+        width: 60%;
     }
 }
 
@@ -38,12 +46,10 @@
 }
 
 #clicker {
-    width: 30%;
-    border: 1px solid black;
-    background-color: white;
-    border-radius: 10px;
+    width: 40%;
+    max-width: 200px;
+    max-height: 300px;
     margin-bottom: 20px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-drag: none;
@@ -52,13 +58,20 @@
     cursor: pointer;
 }
 
+#clicker:active {
+    transform: scale(.98);
+}
+
 #factoryTitle {
     font-family: headerFont;
     font-size: 2.5em;
+    padding: 5px;
 }
 
 .wing {
-    width: 20%;
+    width: 25%;
+    max-width: 125px;
+    max-height: 125px;
     vertical-align: top;
     margin-top: 30px;
     user-select: none;
@@ -82,16 +95,86 @@
     font-size: 1.6em;
 }
 
-#upgrades {
+#menu>div {
+    width: 33%;
+    cursor: pointer;
+    margin: auto;
+}
+
+#menu>div:last-child {
+    border-left: 1px solid whitesmoke;
+}
+
+#menu>div:first-child {
+    border-right: 1px solid whitesmoke;
+}
+
+#menu {
+    padding: 20px 0px;
+    margin: 15px 0px;
+    background-color: #0e1111;
     display: flex;
+    color: whitesmoke;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.active:after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    padding-top: 5px;
+    border-bottom: 1px solid whitesmoke;
+
+}
+
+#upgrades {
     margin-top: 10px;
 }
 
-#poofBox, #sipBox, #lacelessBox {
+#statistics,
+#preferences {
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    transform: scale(0);
+}
+
+#preferences {
+    margin: auto;
+}
+
+#preferences div {
+    width: 100%
+}
+
+#preferences button {
+    margin-bottom: 20px;
+    padding: 12px;
+    font-size: .8em;
+    margin: 20px auto;
+
+}
+
+#row1,
+#row2,
+#row3 {
+    display: flex;
+}
+
+#preferences button:hover {
+    transform: translateY(-2px);
+}
+
+
+#poofBox,
+#sipBox,
+#lacelessBox {
     margin: 10px auto;
     padding: 20px;
     display: block;
-    width: 20%;
+    width: 80%;
     border: 1px solid black;
     border-radius: 8px;
     font-family: textFont;
@@ -99,18 +182,63 @@
     background-color: #fff2f7;
 }
 
-.resetProgress {
-    margin-top: 20px;
+#databox span {
+    font-size: 1.5em;
 }
 
-.resetProgress > button {
-    margin: auto;
+#databox {
+    line-height: 1.8em;
+    background-color: #000000;
+    background-image: linear-gradient(315deg, #000000 0%, #5e5368 90%);
+    color: whitesmoke;
+    padding: 20px;
+    border: 3px solid #0e1111;
+    border-radius: 2px;
+
+}
+
+#databox div:first-child {
+    font-size: 1.5em;
+}
+
+#databox img:first-child {
+    padding-right: 10px;
+}
+
+#databox img:last-child {
+    padding-left: 10px;
+}
+
+#resetTeeth,
+#resetConfirm {
+    margin-left: 20px;
+    border: 2px solid red;
+}
+
+#saveString {
+    margin: 10px 10px 0px 25px;
+}
+
+#saveArea {
+    display: flex;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    transform: scale(0);
+}
+
+#saveArea button {
+    padding: 10px;
 }
 
 #resetConfirm {
     display: none;
-    background-color: #fcb771;
+    background-color: red;
+    color: whitesmoke;
+    border: 2px solid black;
+    padding: 20px;
 }
+
 
 html {
     text-align: center;

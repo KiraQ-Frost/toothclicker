@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,40 +9,80 @@
     <link rel="icon" type="image/png" sizes="32x32" href="images/icons8-tooth-32.png">
     <script src="script.js"></script>
 </head>
+
 <body onload="updateTeeth(), updateText()">
-    
-    <h1 id="factoryTitle">Princess Omelas Tooth Factory</h1>
-    <div id="tooManyTeeth"></div>
-    <div id="wingsAndTeeth">
-        <img src="images/wing.png" class="wing" id="firstWing" draggable="false">
-        <img src="images/tooth-png-31286.png" id="clicker" onclick="count()" draggable="false">
-        <img src="images/wing.png" class="wing" id="secondWing" draggable="false">
-    </div>
-    <div id="teethCounter">Teeth: <span id="teethCount">0</span></div>
-    <div id="tpsCounter">Teeth Per Second: <span id="teethCountPerSecond">0</span></div>
-    <div id="tpcCounter">Teeth Per Click: <span id="teethCountPerClick">1</span></div>
-    <div id="upgrades">
-        <div id="poofBox">
-            <div>Poofs: <span id="poofNum">0</span></div>
-            <div>Cost: <span id="poofCost">69</span></div>
-            <button onclick="buyPoof()">Buy</button>
+    <div id="screen">
+        <div id="clickerArea">
+            <h1 id="factoryTitle">The Tooth Factory</h1>
+            <div id="wingsAndTeeth">
+                <img src="images/wing.png" class="wing" id="firstWing" draggable="false">
+                <img src="images/updatedTooth-1.png" id="clicker" onclick="count()" draggable="false">
+                <img src="images/wing.png" class="wing" id="secondWing" draggable="false">
+            </div>
+            <div id="teethCounter">Teeth: <span id="teethCount">0</span></div>
+            <div id="tpsCounter">Teeth Per Second: <span id="teethCountPerSecond">0</span></div>
+            <div id="tpcCounter">Teeth Per Click: <span id="teethCountPerClick">1</span></div>
         </div>
-        <img class="heart" src="images/heart.png">
-        <div id="sipBox">
-            <div>Sips: <span id="sipNum">0</span></div>
-            <div>Cost: <span id="sipCost">100</span></div>
-            <button onclick="buySip()">Buy</button>
+        <div id="windowGrouping">
+            <div id="menu">
+                <div id="shop" class="active" onclick="displayShop()">SHOP</div>
+                <div id="stats" onclick="displayStats()">STATS</div>
+                <div id="settings" onclick="displaySettings()">OPTIONS</div>
+            </div>
+            <div id="upgrades">
+                <div id="poofBox">
+                    <div>Poofs: <span id="poofNum">0</span></div>
+                    <div>Cost: <span id="poofCost">69</span></div>
+                    <button onclick="buyPoof()">Buy</button>
+                </div>
+                <div id="sipBox">
+                    <div>Sips: <span id="sipNum">0</span></div>
+                    <div>Cost: <span id="sipCost">100</span></div>
+                    <button onclick="buySip()">Buy</button>
+                </div>
+                <div id="lacelessBox">
+                    <div>Laceless: <span id="lacelessNum">0</span></div>
+                    <div>Cost: <span id="lacelessCost">1000</span></div>
+                    <button onclick="buyLaceless()">Buy</button>
+                </div>
+            </div>
+            <div id="statistics">
+                <div id="databox">
+                    <div><img src="images/icons8-tooth-32.png">STATISTICS<img src="images/icons8-tooth-32.png"></div>
+                    <div>TEETH IN POSSESSION:&nbsp; <span id="statsTeethCount">0</span></div>
+                    <div>TEETH PRIED ALL TIME:&nbsp; <span id="teethAllTime">0</span></div>
+                    <div>TEETH PER SECOND:&nbsp; <span id="statsTps">0</span></div>
+                    <div>TEETH PER CLICK:&nbsp; <span id="statsTpc">1</span></div>
+                    <div>TEETH CLICKED:&nbsp; <span id="teethClicked">0</span></div>
+                    <div>TEETH PRIED FRESHLY:&nbsp; <span id="teethPried">0</span></div>
+                </div>
+            </div>
+            <div id="preferences">
+                <div id="row1">
+                    <button id="saveProgress" onclick="saveProgress()">Save Progress</button>
+                    <button id="resetTeeth" onclick="showConfirm()">Clear Save</button>
+                    <button id="resetConfirm" onclick="resetProgress()">Confirm</button>
+                </div>
+                <div id="row2">
+                    <button id="importSave" onclick="importSave()">Import Save</button>
+                    <button id="exportSave" onclick="exportSave()">Export Save</button>
+                </div>
+                <div id="saveArea" class="inactive">
+                    <textarea name="saveString" id="saveString" cols="25" rows="8"></textarea>
+                    <div id="saveStringButtons">
+                        <button id="dummyButton">----</button>
+                        <button id="cancelSaveString" onclick="cancelSaveString()">Cancel</button>
+                    </div>
+                </div>
+                <div id="row3">
+                    <button id="loadFromFile" onclick="loadFromFile()">Load From File</button>
+                    <button id="saveToFile" onclick="saveToFile()">Save To File</button>
+                </div>
+            </div>
         </div>
-        <img class="heart" src="images/heart.png">
-        <div id="lacelessBox">
-            <div>Laceless: <span id="lacelessNum">0</span></div>
-            <div>Cost: <span id="lacelessCost">1000</span></div>
-            <button onclick="buyLaceless()">Buy</button>
-        </div>
+
     </div>
-    <div class="resetProgress">
-        <button  id="resetTeeth" onclick="showConfirm()">Wipe Save</button>
-        <button id="resetConfirm" onclick="resetProgress()">Confirm</button>
-    </div>
+
 </body>
+
 </html>
