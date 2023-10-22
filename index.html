@@ -13,7 +13,7 @@
 <body onload="updateTeeth(), updateText()">
     <div id="screen">
         <div id="clickerArea">
-            <h1 id="factoryTitle">The Tooth Factory</h1>
+            <h1 id="factoryTitle">Tooth Clicker</h1>
             <div id="wingsAndTeeth">
                 <img src="images/wing.png" class="wing" id="firstWing" draggable="false">
                 <img src="images/updatedTooth-1.png" id="clicker" onclick="count()" draggable="false">
@@ -30,20 +30,20 @@
                 <div id="settings" onclick="displaySettings()">OPTIONS</div>
             </div>
             <div id="upgrades">
-                <div id="poofBox">
-                    <div>Poofs: <span id="poofNum">0</span></div>
-                    <div>Cost: <span id="poofCost">69</span></div>
-                    <button onclick="buyPoof()">Buy</button>
+                <div id="cavitiesBox">
+                    <div>Cavities: <span id="cavitiesNum">0</span></div>
+                    <div>Cost: <span id="cavitiesCost">69</span></div>
+                    <button onclick="buyCavities()">Buy</button>
                 </div>
-                <div id="sipBox">
-                    <div>Sips: <span id="sipNum">0</span></div>
-                    <div>Cost: <span id="sipCost">100</span></div>
-                    <button onclick="buySip()">Buy</button>
+                <div id="pliersBox">
+                    <div>Pliers: <span id="pliersNum">0</span></div>
+                    <div>Cost: <span id="pliersCost">100</span></div>
+                    <button onclick="buyPliers()">Buy</button>
                 </div>
-                <div id="lacelessBox">
-                    <div>Laceless: <span id="lacelessNum">0</span></div>
-                    <div>Cost: <span id="lacelessCost">1000</span></div>
-                    <button onclick="buyLaceless()">Buy</button>
+                <div id="teeththiefBox">
+                    <div>Teeth Thieves: <span id="teeththiefNum">0</span></div>
+                    <div>Cost: <span id="teeththiefCost">1000</span></div>
+                    <button onclick="buyTeeththief()">Buy</button>
                 </div>
             </div>
             <div id="statistics">
@@ -80,9 +80,7 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 </body>
 
 </html>

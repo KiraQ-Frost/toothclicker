@@ -1,11 +1,17 @@
 @font-face {
     font-family: headerFont;
-    src: url(fonts/alsscrp.ttf);
+    src: url(fonts/Cormorant-Bold.ttf);
 }
 
 @font-face {
     font-family: textFont;
     src: url(fonts/Cormorant-Bold.ttf);
+}
+
+@media screen and (min-width: 650.1px) {
+    html {
+        height: 100%;
+    }
 }
 
 @media screen and (min-width: 650px) {
@@ -19,13 +25,6 @@
         max-height: 125px;
     }
 
-    .heart {
-        display: inline;
-        max-width: 25px;
-        max-height: 25px;
-        margin: auto 0px;
-    }
-
     #screen {
         display: flex;
     }
@@ -37,12 +36,7 @@
     #windowGrouping {
         width: 60%;
     }
-}
 
-@media screen and (max-width: 1300px) {
-    .heart {
-        display: none;
-    }
 }
 
 #clicker {
@@ -168,9 +162,9 @@
 }
 
 
-#poofBox,
-#sipBox,
-#lacelessBox {
+#cavitiesBox,
+#pliersBox,
+#teeththiefBox {
     margin: 10px auto;
     padding: 20px;
     display: block;
@@ -244,7 +238,13 @@ html {
     text-align: center;
     font-family: textFont;
     font-size: 1.2em;
-    background-color: #ffedf4;
+    background: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
+}
+
+
+body {
+    background: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
+    height: 100%;
 }
 
 button {
