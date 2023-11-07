@@ -57,6 +57,7 @@
 
 #popup.show {
     visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.6s;
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.6s;
 }
 
@@ -90,6 +91,7 @@
     -webkit-user-drag: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+    -webkit-tap-highlight-color: transparent;
     cursor: pointer;
 }
 

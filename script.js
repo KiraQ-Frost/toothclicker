@@ -283,7 +283,7 @@ setInterval(function () {
     updateTeeth();
 }, 1000)
 
-//every 30 seconds
+//every 60 seconds
 setInterval(function () {
     saveProgress();
     updateStatisticsText();
