@@ -65,7 +65,6 @@ function buyTeeththief() {
     }
 }
 
-//TODO: display div at top confirming progress saved
 function saveProgress() {
     localStorage.setItem("teeth", teeth);
     localStorage.setItem("teethAllTime", teethAllTime);
@@ -81,6 +80,14 @@ function saveProgress() {
     localStorage.setItem("pliers", pliers);
     localStorage.setItem("teeththiefCost", teeththiefCost);
     localStorage.setItem("teeththief", teeththief);
+
+    var x = document.getElementById("popup");
+    if(x.className == "") {
+        x.className = "show";
+        setTimeout(function(){
+            x.className = x.className.replace("show", "");
+        }, 3000);
+    }
 }
 
 function resetProgress() {
@@ -269,7 +276,7 @@ setInterval(function () {
 setInterval(function () {
     saveProgress();
     updateStatisticsText();
-}, 30000)
+}, 60000)
 
 //------FOR DISPLAYING EACH WINDOW----//
 function displaySaveArea() {
