@@ -81,10 +81,16 @@ function saveProgress() {
     localStorage.setItem("teeththiefCost", teeththiefCost);
     localStorage.setItem("teeththief", teeththief);
 
+    popup("Progress Saved");
+    
+}
+
+function popup(message) {
     var x = document.getElementById("popup");
-    if(x.className == "") {
+    x.innerText = message;
+    if (x.className == "") {
         x.className = "show";
-        setTimeout(function(){
+        setTimeout(function () {
             x.className = x.className.replace("show", "");
         }, 3000);
     }
@@ -155,7 +161,9 @@ function resetButtons() {
 
 
 function importSave() {
-    document.getElementById("saveString").value = "";
+    var textarea = document.getElementById("saveString");
+    textarea.value = "";
+    textarea.readOnly = false;
     displaySaveArea();
     var newButton = document.createElement('button');
     newButton.innerHTML = "Submit";
@@ -201,6 +209,7 @@ function decryptString() {
             updateTeeth();
             updateText();
             displayShop();
+            popup("Progress Imported");
         }
 
     }
@@ -219,12 +228,14 @@ function exportSave() {
     textarea.value = save;
     textarea.focus();
     textarea.select();
+    textarea.readOnly = true;
 
     var newButton = document.createElement('button');
     newButton.innerHTML = "Copy";
     newButton.id = "dummyButton";
     newButton.onclick = function () {
         navigator.clipboard.writeText(save);
+        popup("Copied to Clipboard");
     }
     var oldButton = document.getElementById("dummyButton");
     oldButton.replaceWith(newButton);
