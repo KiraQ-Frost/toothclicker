@@ -26,12 +26,8 @@ function buyCavities() {
     if (teeth >= cavitiesCost) {
         cavities++;
         teeth -= cavitiesCost
-        cavitiesCost *= 2;
-        if (cavities > 5) {
-            tps += (cavities - 5);
-        } else {
-            tps++;
-        }
+        cavitiesCost = Math.floor(cavitiesCost * 1.87);
+        tps += Math.floor(cavities * 1.13);
         updateText();
         updateTeeth();
     }
@@ -41,12 +37,8 @@ function buyPliers() {
     if (teeth >= pliersCost) {
         pliers++;
         teeth -= pliersCost;
-        pliersCost *= 2;
-        if (pliers > 5) {
-            tpc += (pliers - 5);
-        } else {
-            tpc++;
-        }
+        pliersCost = Math.floor(pliersCost * 1.48);
+        tpc += Math.floor(pliers * 1.57);
         updateText();
         updateTeeth();
     }
@@ -54,11 +46,11 @@ function buyPliers() {
 
 function buyTeeththief() {
     if (teeth >= teeththiefCost) {
-        tpc += (5 + teeththief);
-        tps += (5 + teeththief);
+        tpc += Math.floor((5 + teeththief) * 1.5);
+        tps += Math.floor((5 + teeththief) * 1.15);
         teeththief++;
         teeth -= teeththiefCost;
-        teeththiefCost *= 2;
+        teeththiefCost = Math.floor(teeththiefCost * 1.75);
 
         updateText();
         updateTeeth();
@@ -267,21 +259,30 @@ function cancelSaveString() {
 
 function formatNumbers(number) {
     var toReturn = number;
+    if(toReturn.toString().indexOf('.') > 0) {
+        toReturn = toReturn.toString().substring(0, toReturn.toString().indexOf('.'));
+    }
     if (number >= 1000 && number < 1000000) {
-        toReturn = number.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        toReturn = toReturn.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
     } else if (number >= 1000000 && number < 1000000000) {
-        toReturn = number / 1000000
-        toReturn = toReturn.toString().substring(0, 4) + "\xa0million";
+        toReturn = number / 1000000;
+        toReturn = toReturn.toString().substring(0, toReturn.toString().indexOf('.') + 3) + "\xa0million";
+    } else if (number >= 1000000000 && number < 1000000000000) {
+        toReturn = number / 1000000000;
+        toReturn = toReturn.toString().substring(0, toReturn.toString().indexOf('.') + 3) + "\xa0billion";
+    } else if (number >= 1000000000000 && number < 1000000000000000) {
+        toReturn = number / 1000000000000;
+        toReturn = toReturn.toString().substring(0, toReturn.toString().indexOf('.') + 3) + "\xa0trillion";
     }
     return toReturn;
 }
 
 //every second
 setInterval(function () {
-    teeth += tps;
-    teethAllTime += tps;
+    teeth += tps / 2;
+    teethAllTime += tps / 2;
     updateTeeth();
-}, 1000)
+}, 500)
 
 //every 60 seconds
 setInterval(function () {
