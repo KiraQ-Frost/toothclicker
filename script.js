@@ -57,6 +57,11 @@ function buyTeeththief() {
     }
 }
 
+function flipCard(cardToFlip) {
+    var card = document.querySelector(cardToFlip);
+    card.classList.toggle("flip");
+}
+
 function saveProgress() {
     localStorage.setItem("teeth", teeth);
     localStorage.setItem("teethAllTime", teethAllTime);
@@ -86,6 +91,14 @@ function popup(message) {
             x.className = x.className.replace("show", "");
         }, 3000);
     }
+}
+
+function loadFromFile() {
+    popup("Coming Soon");
+}
+
+function saveToFile() {
+    popup("Coming Soon");
 }
 
 function resetProgress() {
