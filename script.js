@@ -123,7 +123,7 @@ function saveToFile() {
 }
 
 function resetProgress() {
-    teeth = 1000000;
+    teeth = 0;
     teethAllTime = 0;
 
     tps = 0;
