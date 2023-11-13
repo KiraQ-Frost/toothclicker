@@ -217,21 +217,6 @@
     height: 20px;
 }
 
-#cavitiesBox,
-#pliersBox,
-#teeththiefBox {
-    margin: 10px auto;
-    padding: 20px;
-    display: block;
-    width: 80%;
-    border: 1px solid black;
-    border-radius: 8px;
-    font-family: textFont;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    background-color: #fff2f7;
-    position: relative;
-}
-
 .card_front, .card_back {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -243,8 +228,8 @@
 }
 
 .card_back {
-    transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
+    transform: rotateX(180deg);
+    -webkit-transform: rotateX(180deg);
     position: absolute;
     right: 0;
     left: 0;
@@ -257,14 +242,24 @@
 
 
 .card {
-    -webkit-transition: transform 0.6s;
+    -webkit-transition: transform 0.5s;
     transition: transform 0.6s;
     transform-style: preserve-3d;
+    margin: 10px auto;
+    padding: 20px;
+    display: block;
+    width: 80%;
+    border: 1px solid black;
+    border-radius: 8px;
+    font-family: textFont;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: #fff2f7;
+    position: relative;
 }
 
 .card.flip {
-    transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
+    transform: rotateX(180deg);
+    -webkit-transform: rotateX(180deg);
 }
 
 #databox span {
