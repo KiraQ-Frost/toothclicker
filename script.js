@@ -12,6 +12,10 @@ var pliersCost = localStorage.getItem("pliersCost") != null ? Number(localStorag
 var pliers = localStorage.getItem("pliers") != null ? Number(localStorage.getItem("pliers")) : 0;
 var teeththiefCost = localStorage.getItem("teeththiefCost") != null ? Number(localStorage.getItem("teeththiefCost")) : 1000;
 var teeththief = localStorage.getItem("teeththief") != null ? Number(localStorage.getItem("teeththief")) : 0;
+var dentistCost = localStorage.getItem("dentistCost") != null ? Number(localStorage.getItem("dentistCost")) : 120000;
+var dentists = localStorage.getItem("dentists") != null ? Number(localStorage.getItem("dentists")) : 0;
+
+var dentistUnlocked = localStorage.getItem("dentistUnlocked") != null ? localStorage.getItem("dentistUnlocked") : false;
 
 function count() {
     teeth += tpc;
@@ -28,6 +32,7 @@ function buyCavities() {
         teeth -= cavitiesCost
         cavitiesCost = Math.floor(cavitiesCost * 1.87);
         tps += Math.floor(cavities * 1.13);
+
         updateText();
         updateTeeth();
     }
@@ -57,6 +62,20 @@ function buyTeeththief() {
     }
 }
 
+function buyDentists() {
+    if(teeth >= dentistCost) {
+        dentists++;
+        teeth -= dentistCost;
+        dentistCost = Math.floor(dentistCost * 1.87);
+        tpc += Math.floor((dentists + pliers + teeththief) * 38.66);
+        tps += Math.floor((dentists + cavities + teeththief) * 14.74);
+
+
+        updateText();
+        updateTeeth();
+    }
+}
+
 function flipCard(cardToFlip) {
     var card = document.querySelector(cardToFlip);
     card.classList.toggle("flip");
@@ -77,6 +96,8 @@ function saveProgress() {
     localStorage.setItem("pliers", pliers);
     localStorage.setItem("teeththiefCost", teeththiefCost);
     localStorage.setItem("teeththief", teeththief);
+    localStorage.setItem("dentistCost", dentistCost);
+    localStorage.setItem("dentists", dentists);
 
     popup("Progress Saved");
     
@@ -102,7 +123,7 @@ function saveToFile() {
 }
 
 function resetProgress() {
-    teeth = 0;
+    teeth = 1000000;
     teethAllTime = 0;
 
     tps = 0;
@@ -116,6 +137,12 @@ function resetProgress() {
     pliers = 0;
     teeththiefCost = 1000;
     teeththief = 0;
+    dentistCost = 120000;
+    dentists = 0;
+
+    dentistUnlocked = false;
+    document.getElementById("dentistLocked").classList.add("locked");
+    document.getElementById("dentistLocked").classList.remove("unlocked");
 
     saveProgress();
     updateText();
@@ -137,6 +164,19 @@ function updateText() {
     document.getElementById("cavitiesNum").innerText = formatNumbers(cavities);
     document.getElementById("teeththiefCost").innerText = formatNumbers(teeththiefCost);
     document.getElementById("teeththiefNum").innerText = formatNumbers(teeththief);
+    document.getElementById("dentistCost").innerText = formatNumbers(dentistCost);
+    document.getElementById("dentistNum").innerText = formatNumbers(dentists);
+
+    if(!dentistUnlocked) {
+        document.getElementById("pliersLeft").innerText = formatNumbers(pliers);
+        if(pliers >= 20) {
+            dentistUnlocked = true;
+        }
+    }
+    if(dentistUnlocked) {
+        document.getElementById("dentistLocked").classList.add("unlocked");
+        document.getElementById("dentistLocked").classList.remove("locked");
+    }
 }
 
 function updateStatisticsText() {
@@ -181,7 +221,7 @@ function importSave() {
 //fix for file importing
 function decryptString() {
     var stringSaved = document.getElementById("saveString").value;
-    var tteeth, tteethAllTime, ttps, ttpc, tteethClicked, tteethPried, tcavitiesCost, tcavities, tpliersCost, tpliers, tteeththiefCost, tteeththief;
+    var tteeth, tteethAllTime, ttps, ttpc, tteethClicked, tteethPried, tcavitiesCost, tcavities, tpliersCost, tpliers, tteeththiefCost, tteeththief, tdentistCost, tdentists, tdentistUnlocked;
     stringSaved = decrypt(stringSaved, 4);
     if (stringSaved.substring(0, 4) == "SAVE") {
         tteeth = stringSaved.substring(stringSaved.indexOf('t') + 1, stringSaved.indexOf('T'));
@@ -195,7 +235,10 @@ function decryptString() {
         tpliersCost = stringSaved.substring(stringSaved.indexOf('v') + 1, stringSaved.indexOf('n'));
         tpliers = stringSaved.substring(stringSaved.indexOf('n') + 1, stringSaved.indexOf('z'));
         tteeththiefCost = stringSaved.substring(stringSaved.indexOf('z') + 1, stringSaved.indexOf('l'));
-        tteeththief = stringSaved.substring(stringSaved.indexOf('l') + 1);
+        tteeththief = stringSaved.substring(stringSaved.indexOf('l') + 1, stringSaved.indexOf('G'));
+        tdentistCost = stringSaved.substring(stringSaved.indexOf('G') + 1, stringSaved.indexOf('d'));
+        tdentists = stringSaved.substring(stringSaved.indexOf('d') + 1, stringSaved.indexOf('b'));
+        tdentistUnlocked = stringSaved.substring(stringSaved.indexOf('b') + 1);
         if (tteeth && tteethAllTime && ttps && ttpc && tteethClicked && tteethPried && tcavitiesCost && tcavities && tpliersCost && tpliers && tteeththiefCost && tteeththief) {
             teeth = Number(tteeth);
             teethAllTime = Number(tteethAllTime);
@@ -209,6 +252,10 @@ function decryptString() {
             pliers = Number(tpliers);
             teeththiefCost = Number(tteeththiefCost);
             teeththief = Number(tteeththief);
+            dentistCost = Number(tdentistCost);
+            dentists = Number(tdentists);
+            dentistUnlocked = Boolean(tdentistUnlocked);
+
             removeDisplayWindow("saveArea");
             document.getElementById("saveArea").classList.add('inactive');
             updateTeeth();
@@ -227,7 +274,7 @@ function exportSave() {
     var save = "SAVE";
     save += "t" + teeth + "T" + teethAllTime + "s" + tps + "c" + tpc + "C" + teethClicked;
     save += "P" + teethPried + "g" + cavitiesCost + "p" + cavities + "v" + pliersCost + "n" + pliers;
-    save += "z" + teeththiefCost + "l" + teeththief;
+    save += "z" + teeththiefCost + "l" + teeththief + "G" + dentistCost + "d" + dentists + "b" + dentistUnlocked;
     save = encrypt(save, 4);
 
     textarea.value = save;

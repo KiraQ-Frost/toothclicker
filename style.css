@@ -262,6 +262,30 @@
     -webkit-transform: rotateX(180deg);
 }
 
+.locked {
+    background: linear-gradient(to right, #868f96 0%, #596164 100%);
+    position: absolute;
+    height: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    border-radius: 8px;
+    border: 2px solid black;
+}
+
+.unlocked {
+    display: none;
+}
+
+.locked svg {
+    height: 75px;
+    width: 75px;
+}
+
+.locked div {
+    font-size: 1.2em;
+}
+
 #databox span {
     font-size: 1.5em;
 }
